@@ -7,11 +7,11 @@ Author: Maurice Pauluhn
 */
 
 require_once __DIR__ . '/vendor/autoload.php';
-
 use Michelf\Markdown;
 
 defined('ABSPATH') or die('No script kiddies please!');
 
+/* Get latest planets from the database table "planeten", in an array, ordered by the latest added */
 function weltall_get_latest_planets() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'planeten';
@@ -25,6 +25,7 @@ function weltall_get_latest_planets() {
     return $results;
 }
 
+/* Create a shortcode to get the latest planets displayed on a page with the shortcode [weltall] */
 function weltall_shortcode() {
     $planets = weltall_get_latest_planets();
 
